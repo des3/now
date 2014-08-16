@@ -4,7 +4,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <form>
-          <div class="row col-xs-12">
+          <div class="row" id="filter-leads">
             <div class="form-group">
             <input type="search" ng-model="q" class="form-control" placeholder="Filter Leads ...">
             <i class="fa fa-search"></i>
@@ -13,11 +13,11 @@
         </div>
       </form>
       <div class="list-group">
-        <a class="list-group-item" href="#" ng-repeat="lead in leads | filter:q">
+        <a class="list-group-item" ng-repeat="lead in leads | filter:q" ng-click="open($index)">
           <img ng-src="images/photos/{{lead.name}}.jpg" class="img-rounded pull-left"/>
           <h4 class="list-group-item-heading">{{lead.name}}</h4>
           <p class="list-group-item-text">{{lead.company}}</p>
-        </a>
+      </a>
       </div>
     </div>
   </div>
@@ -28,24 +28,39 @@
     <div class="col-sm-6" ng-repeat="lead in leads | filter:q">
       <div class="panel panel-default">
 
-        <div class="panel-heading clearfix" ng-click="">
-          <h3 class="hero-title pull-left">{{lead.name}}</h3>
+        <div class="panel-heading clearfix" ng-click="open($index)">
+          <h3 class="hero-title pull-left">{{lead.company}}</h3>
           <span class="pull-right">
             <i class="fa fa-phone-square"></i>
             <i class="fa fa-envelope"></i>
           </span>
         </div>
 
-        <div class="list-group">
+        <div class="list-group" ng-click="open($index)">
+
+          <div class="company-details">
+            <div class="list-group-item">
+              <img ng-src="images/logos/{{lead.company}}.png" class="img-rounded pull-right"/>
+              <p class="list-group-item-text">Industry: <strong>{{lead.industry}}</strong></p>
+              <p class="list-group-item-text">Revenues: <strong>{{lead.revenues}}</strong></p>
+              <p class="list-group-item-text">Employees: <strong>{{lead.employees}}</strong></p>
+              <a class="company-details-link">
+                <img ng-src="images/insideview.png" class="img-rounded pull-right"/>
+              </a>
+            </div>
+          </div>  
+
+          <hr>
 
           <div class="employee-details">
             <div class="list-group-item">
               <img ng-src="images/photos/{{lead.name}}.jpg" class="img-rounded pull-left"/>
-              <h4 class="list-group-item-heading">{{lead.title}}</h4>
+              <h4 class="list-group-item-heading">{{lead.name}}</h4>
+              <p class="list-group-item-text"><strong>{{lead.title}}</strong></p>
               <p class="list-group-item-text">Based in {{lead.location}}</p>
               <p class="list-group-item-text">{{lead.workhistory}}</p>
-              <p class="list-group-item-text">{{lead.interests}}</p>
-              <a class="employee-details-link" href="#">
+              <p class="list-group-item-text"><i>{{lead.interests}}</i></p>
+              <a class="employee-details-link">
                 <img ng-if="lead.linkedinurl" ng-src="images/linkedin.png" class="img-rounded social-button"/>
                 <img ng-if="lead.twitterurl" ng-src="images/twitter.png" class="img-rounded social-button"/>
                 <img ng-if="lead.facebookurl" ng-src="images/facebook.png" class="img-rounded social-button"/>
@@ -54,20 +69,6 @@
             </div>
           </div>
 
-          <hr>
-
-          <div class="company-details">
-            <div class="list-group-item">
-              <img ng-src="images/logos/{{lead.company}}.png" class="img-rounded pull-right"/>
-              <h4 class="list-group-item-heading">{{lead.company}}</h4>
-              <p class="list-group-item-text">Industry: <span>{{lead.industry}}</span></p>
-              <p class="list-group-item-text">Revenues: <span>{{lead.revenues}}</span></p>
-              <a class="company-details-link" href="#">
-                <img ng-src="images/insideview.png" class="img-rounded pull-right"/>
-              </a>
-              <p class="list-group-item-text">Employees: <span>{{lead.employees}}</span></p>
-            </div>
-          </div>   
         </div>
 
         <div class="panel-footer">
@@ -101,14 +102,22 @@
 <div>
   <script type="text/ng-template" id="leadDetailsModal.html">
     <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+        <h3 class="modal-title">{{lead.name}}, {{lead.title}} at {{lead.company}} </h3>
     </div>
         <div class="modal-body">
-          Selected: <b>{{ lead.name }}</b>
+          All kinds of details about <b>{{ lead.name }}</b> here ...
+
+          <p></p>
+
+          <p>- Highly appropriate pitch, with any relevant product details</p>
+
+          <p>- Extracts from LinkedIn, Twitter, etc</p>
+
+          <p>- Company details from InsideView, Hoovers etc</p>
+
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
   </script>
 </div>

@@ -3,7 +3,8 @@
 angular
   .module('nowApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
