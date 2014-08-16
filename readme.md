@@ -1,7 +1,5 @@
 http://www.google.com/landing/now/#cards
 
-# inside sales at b2b
-
 - CRM: summarize all your leads for the day into cards 
   1. cold calls
   2. warm calls
@@ -16,6 +14,3 @@ http://www.google.com/landing/now/#cards
 - UI
   swipe left and right to move on
   recatogerize leads if needed
-
-- Goal: 
-  show Derek Draper what I can do?
