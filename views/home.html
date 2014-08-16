@@ -1,0 +1,114 @@
+<div class="row">
+
+  <div class="col-sm-3 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form>
+          <div class="row col-xs-12">
+            <div class="form-group">
+            <input type="search" ng-model="q" class="form-control" placeholder="Filter Leads ...">
+            <i class="fa fa-search"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="list-group">
+        <a class="list-group-item" href="#" ng-repeat="lead in leads | filter:q">
+          <img ng-src="images/photos/{{lead.name}}.jpg" class="img-rounded pull-left"/>
+          <h4 class="list-group-item-heading">{{lead.name}}</h4>
+          <p class="list-group-item-text">{{lead.company}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-9 bootcards-cards">
+  
+    <div class="col-sm-6" ng-repeat="lead in leads | filter:q">
+      <div class="panel panel-default">
+
+        <div class="panel-heading clearfix" ng-click="">
+          <h3 class="hero-title pull-left">{{lead.name}}</h3>
+          <span class="pull-right">
+            <i class="fa fa-phone-square"></i>
+            <i class="fa fa-envelope"></i>
+          </span>
+        </div>
+
+        <div class="list-group">
+
+          <div class="employee-details">
+            <div class="list-group-item">
+              <img ng-src="images/photos/{{lead.name}}.jpg" class="img-rounded pull-left"/>
+              <h4 class="list-group-item-heading">{{lead.title}}</h4>
+              <p class="list-group-item-text">Based in {{lead.location}}</p>
+              <p class="list-group-item-text">{{lead.workhistory}}</p>
+              <p class="list-group-item-text">{{lead.interests}}</p>
+              <a class="employee-details-link" href="#">
+                <img ng-if="lead.linkedinurl" ng-src="images/linkedin.png" class="img-rounded social-button"/>
+                <img ng-if="lead.twitterurl" ng-src="images/twitter.png" class="img-rounded social-button"/>
+                <img ng-if="lead.facebookurl" ng-src="images/facebook.png" class="img-rounded social-button"/>
+                <img ng-if="lead.pinteresturl" ng-src="images/pinterest.png" class="img-rounded social-button"/>
+              </a>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="company-details">
+            <div class="list-group-item">
+              <img ng-src="images/logos/{{lead.company}}.png" class="img-rounded pull-right"/>
+              <h4 class="list-group-item-heading">{{lead.company}}</h4>
+              <p class="list-group-item-text">Industry: <span>{{lead.industry}}</span></p>
+              <p class="list-group-item-text">Revenues: <span>{{lead.revenues}}</span></p>
+              <a class="company-details-link" href="#">
+                <img ng-src="images/insideview.png" class="img-rounded pull-right"/>
+              </a>
+              <p class="list-group-item-text">Employees: <span>{{lead.employees}}</span></p>
+            </div>
+          </div>   
+        </div>
+
+        <div class="panel-footer">
+          <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+              <button class="btn btn-success">
+                <i class="fa fa-thumbs-up"></i>
+                Success
+              </button>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-info">
+                <i class="fa fa-refresh"></i>
+                Try Later
+              </button>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-danger">
+                <i class="fa fa-thumbs-down"></i>
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+</div>
+
+<div>
+  <script type="text/ng-template" id="leadDetailsModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+        <div class="modal-body">
+          Selected: <b>{{ lead.name }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+  </script>
+</div>

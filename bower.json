@@ -1,0 +1,30 @@
+{
+  "name": "now",
+  "version": "0.0.0",
+  "authors": [
+    "Tarun Desikan <tdesikan@gmail.com>"
+  ],
+  "description": "now cards",
+  "keywords": [
+    "angular",
+    "cards"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/des3/now",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.22",
+    "angular-resource": "~1.2.22",
+    "angular-route": "~1.2.22",
+    "bootcards": "~0.1.0",
+    "font-awesome": "~4.1.0",
+    "angular-bootstrap": "~0.11.0"
+  }
+}
