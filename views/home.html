@@ -1,15 +1,31 @@
-<div class="navbar subnav">
-  <div class="container">
-    <div class="navbar-header">
-      Total Leads: {{leads.length}}
-      Successful: {{status.successful}}
-      Try Later: {{status.later}}
-      Removed: {{status.removed}}
+<div class="container">
+
+  <div class="row">
+  <div class="col-sm-12 summary">
+
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <p><strong>{{leads.length}} leads</strong>
+         for {{date | date:'fullDate'}}
+        </p>
+        <div class="row">
+          <span class="bg-success">
+            <i class="fa fa-thumbs-up"></i>
+            Successful: {{status.successful}} 
+          </span>
+          <span class="bg-info">
+            <i class="fa fa-refresh"></i>
+            Try Later: {{status.later}} 
+          </span>
+          <span class="bg-danger">
+            <i class="fa fa-thumbs-down"></i>
+            Removed: {{status.removed}} 
+          </span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="container">
+  </div>
 
   <div class="row">
 
@@ -38,7 +54,6 @@
       </div>
 
     </div>
-
 
     <div class="col-sm-9 bootcards-cards">
     
@@ -79,7 +94,7 @@
                 <p class="list-group-item-text"><strong>{{lead.title}}</strong></p>
                 <p class="list-group-item-text">Based in {{lead.location}}</p>
                 <p class="list-group-item-text">{{lead.workhistory}}</p>
-                <p class="list-group-item-text subtle">{{lead.interests}}</p>
+                <p class="list-group-item-text text-muted">{{lead.interests}}</p>
                 <span class="employee-details-link">
                   <img ng-if="lead.linkedinurl" ng-src="images/linkedin.png" class="img-rounded social-button"/>
                   <img ng-if="lead.twitterurl" ng-src="images/twitter.png" class="img-rounded social-button"/>

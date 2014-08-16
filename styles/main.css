@@ -1,6 +1,10 @@
 /* Custom page header */
+body {
+  padding-top: 70px;
+}
 .navbar {
   min-height: 40px;
+  margin-bottom: 0px;
 }
 
 [ng-click], [data-ng-click], [x-ng-click] {
@@ -19,6 +23,12 @@
 }
 
 /* TDAW */
+
+.summary span {
+  margin: 0 10px;
+  padding: 5px 5px;
+}
+
 .status-success {
   color: #fff;
   background-color: #5cb85c !important;
@@ -89,12 +99,6 @@ form #filter-leads {
   margin-top: 2px;
   margin-bottom: 2px;
 }
-
-.list-group .subtle {
-  color: #666;
-  font-style: italic;;
-}
-
 
 /* angular-ui */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

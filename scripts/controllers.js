@@ -10,11 +10,13 @@ angular.module('nowApp').controller('HeaderCtrl', function ($scope, $location) {
     $location.path(path);
   };
 
-  $scope.date = new Date();
+  $scope.isCollapsed = true;  
 
 });
 
 angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $window, $http, $modal) {
+
+  $scope.date = new Date();
 
   $scope.go = function (path) {
     $location.path(path);
@@ -85,6 +87,11 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
 });
 
 angular.module('nowApp').controller('SettingsCtrl', function () {
+
+
+});
+
+angular.module('nowApp').controller('ManagerCtrl', function () {
 
 
 });

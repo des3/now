@@ -12,6 +12,10 @@ angular
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       })
+      .when('/manager', {
+        templateUrl: 'views/manager.html',
+        controller: 'ManagerCtrl'
+      })
       .when('/settings', {
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl'
