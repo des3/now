@@ -14,3 +14,12 @@ http://www.google.com/landing/now/#cards
 - UI
   swipe left and right to move on
   recatogerize leads if needed
+
+
+
+---
+TODO
+
+1. Make the success/fail buttons work
+2. Add more details to the overlay
+3. Open links to social pages

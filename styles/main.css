@@ -14,6 +14,24 @@
   padding-left: 5px;
 }
 
+.status-success {
+  color: #fff;
+  background-color: #5cb85c !important;
+  border-color: #4cae4c !important;
+}
+
+.status-remove {
+  color: #fff;
+  background-color: #d9534f !important;
+  border-color: #d43f3a !important;
+}
+
+.status-later {
+  color: #fff;
+  background-color: #39b3d7 !important;
+  border-color: #269abc !important;
+}
+
 form #filter-leads {
   margin-left: 0px;
   margin-right: 0px;
@@ -52,6 +70,7 @@ form #filter-leads {
 
 .company-details .list-group-item .company-details-link img {
   margin-right: 0px;
+  margin-left: 5px;
   height: 20px;
   width: 20px;
 }
@@ -65,6 +84,12 @@ form #filter-leads {
   margin-top: 2px;
   margin-bottom: 2px;
 }
+
+.list-group .subtle {
+  color: #666;
+  font-style: italic;;
+}
+
 
 /* angular-ui */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

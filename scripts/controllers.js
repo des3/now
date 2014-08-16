@@ -20,15 +20,16 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
     $location.path(path);
   };
 
-  // TODO: Move to a service
-  $http.get('data/leads.json').success(function (data) {
-    // process data here
-    $scope.leads = data;
-  });
+  $scope.action = function(lead, status) {
+    lead.status = status;
 
+    // TODO: move the lead to the bottom of the array
+    // CHECK: need the index of the element?
+    $scope.leads.push(lead);
+    $scope.leads.splice(index, 1);
+  };
   
   $scope.open = function (index) {
-
     var modalInstance = $modal.open ({
       templateUrl: 'leadDetailsModal.html',
       controller: ModalInstanceCtrl,
@@ -39,7 +40,21 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
         }
       }
     });
+  };
 
+  // TODO: Move to a service
+  $http.get('data/leads.json').success(function (data) {
+    // process data here
+    $scope.leads = data;
+  });
+
+  // Please note that $modalInstance represents a modal window (instance) dependency.
+  // It is not the same as the $modal service used above.
+  var ModalInstanceCtrl = function ($scope, $modalInstance, lead) {
+    $scope.lead = lead;
+    $scope.ok = function () {
+      $modalInstance.close('ok');
+    };
   };
   
 
@@ -49,15 +64,3 @@ angular.module('nowApp').controller('SettingsCtrl', function () {
 
 
 });
-
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $modal service used above.
-
-var ModalInstanceCtrl = function ($scope, $modalInstance, lead) {
-
-  $scope.lead = lead;
-
-  $scope.ok = function () {
-    $modalInstance.close('ok');
-  };
-};
