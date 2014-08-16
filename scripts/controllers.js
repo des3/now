@@ -23,20 +23,22 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
   $scope.action = function(lead, status) {
     lead.status = status;
 
-    // TODO: move the lead to the bottom of the array
-    // CHECK: need the index of the element?
+    // move the lead to the bottom of the array
+    var i = $scope.leads.indexOf(lead);
+    $scope.leads.splice(i, 1);
     $scope.leads.push(lead);
-    $scope.leads.splice(index, 1);
+
+    $scope.status = countStatus();
   };
   
-  $scope.open = function (index) {
+  $scope.open = function (lead) {
     var modalInstance = $modal.open ({
       templateUrl: 'leadDetailsModal.html',
       controller: ModalInstanceCtrl,
       size: 'lg',
       resolve: {
         lead: function () {
-          return $scope.leads[index];
+          return lead;
         }
       }
     });
@@ -46,7 +48,29 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
   $http.get('data/leads.json').success(function (data) {
     // process data here
     $scope.leads = data;
+    $scope.status = countStatus();
   });
+
+  var countStatus = function () {
+    var successful = [], later = [], removed = [];
+
+    successful = $scope.leads.filter(function(lead){
+      return lead.status == 'success';
+    });
+
+    later = $scope.leads.filter(function(lead){
+      return lead.status == 'later';
+    });
+
+    removed = $scope.leads.filter(function(lead){
+      return lead.status == 'remove';
+    });
+    return {
+      successful: successful.length,
+      later: later.length,
+      removed: removed.length
+    } 
+  };
 
   // Please note that $modalInstance represents a modal window (instance) dependency.
   // It is not the same as the $modal service used above.

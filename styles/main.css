@@ -7,6 +7,10 @@
     cursor: pointer;
 }
 
+/* Bootstrap tweak */
+.panel-default {
+  border-color: #ccc;
+}
 
 /* Bootcards tweaks */
 .bootcards-list .list-group-item-heading, 
@@ -14,6 +18,7 @@
   padding-left: 5px;
 }
 
+/* TDAW */
 .status-success {
   color: #fff;
   background-color: #5cb85c !important;

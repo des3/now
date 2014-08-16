@@ -20,6 +20,5 @@ http://www.google.com/landing/now/#cards
 ---
 TODO
 
-1. Make the success/fail buttons work
 2. Add more details to the overlay
 3. Open links to social pages
