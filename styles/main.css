@@ -102,3 +102,7 @@ form #filter-leads {
 
 /* angular-ui */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.panel-footer .btn {
+  margin-left: 10px !important;
+}

@@ -78,8 +78,8 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
   // It is not the same as the $modal service used above.
   var ModalInstanceCtrl = function ($scope, $modalInstance, lead) {
     $scope.lead = lead;
-    $scope.ok = function () {
-      $modalInstance.close('ok');
+    $scope.dismiss = function () {
+      $modalInstance.close('dismiss');
     };
   };
   
