@@ -72,7 +72,7 @@
           <div class="list-group" ng-click="open(lead)">
 
             <div class="company-details">
-              <a class="list-group-item">
+              <div class="list-group-item">
                 <img ng-src="images/logos/{{lead.company}}.png" class="img-rounded pull-right"/>
                 <h4 class="list-group-item-text-heading">{{lead.company}}</h4>
                 <p class="list-group-item-text">{{lead.industry}}</p>
@@ -82,13 +82,13 @@
                   <img ng-src="images/zoominfo.png" class="img-rounded pull-right"/>
                 </span>
                 <p class="list-group-item-text">{{lead.employees}} employees</p>
-              </a>
+              </div>
             </div>  
 
             <hr>
 
             <div class="employee-details">
-              <a class="list-group-item">
+              <div class="list-group-item">
                 <img ng-src="images/photos/{{lead.name}}.jpg" class="img-rounded pull-left"/>
                 <h4 class="list-group-item-heading">{{lead.name}}</h4>
                 <p class="list-group-item-text"><strong>{{lead.title}}</strong></p>
@@ -101,7 +101,7 @@
                   <img ng-if="lead.facebookurl" ng-src="images/facebook.png" class="img-rounded social-button"/>
                   <img ng-if="lead.pinteresturl" ng-src="images/pinterest.png" class="img-rounded social-button"/>
                 </span>
-              </a>
+              </div>
             </div>
 
           </div>
