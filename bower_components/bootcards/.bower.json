@@ -37,6 +37,5 @@
   },
   "_source": "git://github.com/bootcards/bootcards.git",
   "_target": "~0.1.0",
-  "_originalSource": "bootcards",
-  "_direct": true
+  "_originalSource": "bootcards"
 }
