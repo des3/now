@@ -1,10 +1,16 @@
 'use strict';
 
   // Set up some globals and persist them
-angular.module('nowApp').run(function($rootScope) {
+angular.module('nowApp').run(function ($rootScope, $http) {
   $rootScope.leads = [];
   $rootScope.predicate = "leadscore";
   $rootScope.reverse = true;
+
+  // TODO: Move to a service
+  $http.get('data/leads.json').success(function (data) {
+    // process data here
+    $rootScope.leads = data;
+  });
 });
 
 angular.module('nowApp').controller('HeaderCtrl', function ($scope, $rootScope, $location) {
@@ -21,7 +27,7 @@ angular.module('nowApp').controller('HeaderCtrl', function ($scope, $rootScope, 
 
 });
 
-angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $location, $window, $http, $modal) {
+angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $location, $window, $modal) {
 
   $scope.date = new Date();
 
@@ -40,7 +46,7 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
   };
 
   // sorting algo
-  function compareLeads(a,b) {
+  var compareLeads = function (a,b) {
     var pa = 0, pb = 0;
     if (!a.status) pa = 4
     if (!b.status) pb = 4
@@ -82,15 +88,6 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
     });
   };
 
-  // TODO: Move to a service
-  $http.get('data/leads.json').success(function (data) {
-    // process data here
-    $rootScope.leads = data;
-    
-    $scope.sortLeads();
-    $scope.status = countStatus();
-  });
-
   var countStatus = function () {
     var successful = [], later = [], removed = [];
 
@@ -121,6 +118,8 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
     };
   };
   
+  $scope.sortLeads();
+  $scope.status = countStatus();
 
 });
 
