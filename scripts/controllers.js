@@ -1,6 +1,13 @@
 'use strict';
 
-angular.module('nowApp').controller('HeaderCtrl', function ($scope, $location) {
+  // Set up some globals and persist them
+angular.module('nowApp').run(function($rootScope) {
+  $rootScope.leads = [];
+  $rootScope.predicate = "leadscore";
+  $rootScope.reverse = true;
+});
+
+angular.module('nowApp').controller('HeaderCtrl', function ($scope, $rootScope, $location) {
 
   $scope.isActive = function (viewLocation) { 
     return viewLocation === $location.path();
@@ -10,11 +17,11 @@ angular.module('nowApp').controller('HeaderCtrl', function ($scope, $location) {
     $location.path(path);
   };
 
-  $scope.isCollapsed = true;  
+  $scope.isCollapsed = true;
 
 });
 
-angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $window, $http, $modal) {
+angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $location, $window, $http, $modal) {
 
   $scope.date = new Date();
 
@@ -22,13 +29,22 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
     $location.path(path);
   };
 
+  $scope.sort = function (predicate) {
+    if ($rootScope.predicate == predicate) {
+      $rootScope.reverse = !$rootScope.reverse;
+    } else {
+      $rootScope.predicate = predicate;
+      $rootScope.reverse = false;
+    }
+  };
+
   $scope.action = function(lead, status) {
     lead.status = status;
 
     // move the lead to the bottom of the array
-    var i = $scope.leads.indexOf(lead);
-    $scope.leads.splice(i, 1);
-    $scope.leads.push(lead);
+    var i = $rootScope.leads.indexOf(lead);
+    $rootScope.leads.splice(i, 1);
+    $rootScope.leads.push(lead);
 
     $scope.status = countStatus();
   };
@@ -49,22 +65,22 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $location, $wi
   // TODO: Move to a service
   $http.get('data/leads.json').success(function (data) {
     // process data here
-    $scope.leads = data;
+    $rootScope.leads = data;
     $scope.status = countStatus();
   });
 
   var countStatus = function () {
     var successful = [], later = [], removed = [];
 
-    successful = $scope.leads.filter(function(lead){
+    successful = $rootScope.leads.filter(function(lead){
       return lead.status == 'success';
     });
 
-    later = $scope.leads.filter(function(lead){
+    later = $rootScope.leads.filter(function(lead){
       return lead.status == 'later';
     });
 
-    removed = $scope.leads.filter(function(lead){
+    removed = $rootScope.leads.filter(function(lead){
       return lead.status == 'remove';
     });
     return {

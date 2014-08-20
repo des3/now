@@ -113,6 +113,10 @@ form #sort-leads span {
  */
 .bootcards-cards .panel-heading .hero-title {
   margin-top: 0px; margin-bottom: 0px;
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bootcards-cards .panel-heading .progress {
@@ -120,6 +124,7 @@ form #sort-leads span {
   padding-right: 0px;
   margin-top: 5px;
   margin-bottom: 0px;
+  width: 35%;
 }
 
 .company-details .list-group-item {
@@ -127,7 +132,7 @@ form #sort-leads span {
 }
 
 .employee-details .list-group-item {
-  min-height: 90px;
+  min-height: 120px;
 }
 
 .company-details .list-group-item img {

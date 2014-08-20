@@ -43,11 +43,11 @@
             <div class="row" id="sort-leads">
               <span>
               ... or sort by
-              <a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a>
+              <a href="" ng-click="sort('name')">Name</a>
               , 
-              <a href="" ng-click="predicate = 'company'; reverse=!reverse">Company</a>
+              <a href="" ng-click="sort('company')">Company</a>
               , 
-              <a href="" ng-click="predicate = 'leadscore'; reverse=!reverse">LeadScore</a>
+              <a href="" ng-click="sort('leadscore')">LeadScore</a>
               </span>
             </div>
           </div>
@@ -73,10 +73,8 @@
         <div class="panel panel-default">
 
           <div class="panel-heading clearfix status-{{lead.status}}" ng-click="open(lead)">
-            <div class="row">
-              <h3 class="col-sm-8 hero-title pull-left">{{lead.name}}</h3>
-              <progressbar class="col-sm-3" value="lead.leadscore">{{lead.leadscore}}</progressbar>
-            </div>
+            <h3 class="hero-title pull-left">{{lead.name}}</h3>
+            <progressbar class="pull-right" value="lead.leadscore">{{lead.leadscore}}</progressbar>
           </div>
 
           <div class="list-group" ng-click="open(lead)">
