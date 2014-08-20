@@ -29,23 +29,43 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
     $location.path(path);
   };
 
-  $scope.sort = function (predicate) {
-    if ($rootScope.predicate == predicate) {
-      $rootScope.reverse = !$rootScope.reverse;
-    } else {
-      $rootScope.predicate = predicate;
-      $rootScope.reverse = false;
-    }
+  $scope.sortLeads = function (predicate, reverse) {
+    if (predicate === undefined) predicate = $rootScope.predicate;
+    if (reverse === undefined) reverse = $rootScope.reverse;
+
+    $rootScope.predicate = predicate;
+    $rootScope.reverse = reverse;
+
+    $rootScope.leads = $rootScope.leads.sort(compareLeads);
   };
+
+  // sorting algo
+  function compareLeads(a,b) {
+    var pa = 0, pb = 0;
+    if (!a.status) pa = 4
+    if (!b.status) pb = 4
+    if (a.status == 'later') pa = 3
+    if (b.status == 'later') pb = 3
+    if (a.status == 'success') pa = 2
+    if (b.status == 'success') pb = 2
+    if (a.status == 'remove') pa = 1
+    if (b.status == 'remove') pb = 1
+    if (pa < pb) return 1;
+    if (pa > pb) return -1;
+
+    var predicate = $rootScope.predicate;
+    var ret = $rootScope.reverse ? -1 : 1;
+    if (a[predicate] > b[predicate]) return ret;
+    if (a[predicate] < b[predicate]) return -ret;
+    
+    return 0;
+  }
 
   $scope.action = function(lead, status) {
     lead.status = status;
 
-    // move the lead to the bottom of the array
-    var i = $rootScope.leads.indexOf(lead);
-    $rootScope.leads.splice(i, 1);
-    $rootScope.leads.push(lead);
-
+    // resort leads w our sorting algo
+    $scope.sortLeads();
     $scope.status = countStatus();
   };
   
@@ -66,6 +86,8 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
   $http.get('data/leads.json').success(function (data) {
     // process data here
     $rootScope.leads = data;
+    
+    $scope.sortLeads();
     $scope.status = countStatus();
   });
 
