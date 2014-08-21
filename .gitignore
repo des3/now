@@ -2,5 +2,7 @@ node_modules
 .tmp
 .sass-cache
 
+bower_components/bootstrap
+
 bootstrap/*
 !bootstrap/dist/
