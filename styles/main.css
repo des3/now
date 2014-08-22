@@ -212,3 +212,7 @@ form #sort-leads span {
   filter: url(grayscale.svg); /* Firefox 4+ */
   filter: gray; /* IE 6-9 */
 }
+
+.modal-content .panel-heading .phone-number {
+  color: white;
+}
