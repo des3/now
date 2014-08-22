@@ -81,9 +81,8 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
       controller: ModalInstanceCtrl,
       size: 'lg',
       resolve: {
-        lead: function () {
-          return lead;
-        }
+        lead: function () { return lead; },
+        action: function () {return $scope.action; }
       }
     });
   };
@@ -111,8 +110,9 @@ angular.module('nowApp').controller('HomeCtrl', function ($scope, $rootScope, $l
 
   // Please note that $modalInstance represents a modal window (instance) dependency.
   // It is not the same as the $modal service used above.
-  var ModalInstanceCtrl = function ($scope, $modalInstance, lead) {
+  var ModalInstanceCtrl = function ($scope, $modalInstance, lead, action) {
     $scope.lead = lead;
+    $scope.action = action;
     $scope.dismiss = function () {
       $modalInstance.close('dismiss');
     };

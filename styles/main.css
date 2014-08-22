@@ -42,9 +42,9 @@
 
 /* Custom page header */
 body {
-  padding-top: 70px;
+  padding-top: 120px;
 }
-.navbar {
+.navbar-upper {
   min-height: 40px;
   margin-bottom: 0px;
 }
@@ -54,23 +54,38 @@ body {
 .navbar-nav {
   font-size: 13px;
 }
+.navbar-lower {
+  top: 50px;
+}
 
 /* 
  * summary bar right below header 
  */
+
 .summary .summary-title {
-  margin-top: 0px;
+  margin-top: 15px;
+  padding-left: 0px;
 }
 
-.summary span {
-  // margin: 0 10px;
-  padding: 5px 5px;
-  font-size: 13px;
+.summary .summary-content {
+  padding-right: 0px;
 }
 
-.summary span i {
-  margin-right: 3px;
+.summary .summary-label {
+  margin-left: -15px;
+  margin-top: 15px;
+  width: 20%;
 }
+.summary .progress {
+  margin-top: 17px;
+  width: 55%;
+}
+.summary .summary-leads {
+  margin-top: 15px;
+  width: 20%;
+}
+
+
 
 /*
  * list of leads
@@ -114,7 +129,8 @@ form #sort-leads span {
  */
 .bootcards-cards .panel-heading .hero-title {
   margin-top: 0px; margin-bottom: 0px;
-  width: 60%;
+  padding-left: 10px;
+  width: 65%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -125,7 +141,13 @@ form #sort-leads span {
   padding-right: 0px;
   margin-top: 5px;
   margin-bottom: 0px;
-  width: 35%;
+  margin-right: 10px;
+  width: 25%;
+}
+
+.bootcards-cards .panel-heading .phone-number {
+  margin-top: 5px;
+  font-size: 12px;
 }
 
 .company-details .list-group-item {
