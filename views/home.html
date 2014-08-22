@@ -150,7 +150,13 @@
 <div id="modal">
 
   <script type="text/ng-template" id="leadDetailsModal.html">
-    <div class="panel panel-default bootcards-media">
+    <div class="panel bootcards-media panel-primary">
+
+      <div class="panel-heading">
+        <div class="text-center">
+          <h3>{{lead.name}}, {{lead.title}} at {{lead.company}}</h3>
+        </div>
+      </div>
 
       <div class="panel-body">
         <img src="images/example-details.png" class="img-responsive"/>

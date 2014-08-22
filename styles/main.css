@@ -2,6 +2,9 @@
 .panel-default {
   border-color: #ccc;
 }
+.panel-primary {
+  border-color: #ccc;
+}
 
 
 /* Bootcards tweaks */
